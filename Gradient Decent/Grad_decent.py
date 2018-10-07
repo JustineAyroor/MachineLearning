@@ -32,6 +32,7 @@ def compute_Delf(r,c,labels,wt,data):
 def Update_W(wt,c,n,grad):
     for j in range(0,c,1):
         wt[j] += n*grad[j] 
+        print(w[j])
     return wt
 
 def Compute_Error(r,label,wt,data):
@@ -118,11 +119,11 @@ for k in range(0, 100000, 1): # Reduce No. fo iterations for Assignment 2 Exampl
         Stp_rate = currentErr - previousErr
     else:
         Stp_rate = previousErr - currentErr
-    # if(Stp_rate == 0): # Uncomment for 0 convergence
-    #     break
-    # Stop condition = 0.001
-    if(Stp_rate < 0.001):
+    if(Stp_rate == 0): # Uncomment for 0 convergence
         break
+    # Stop condition = 0.001
+    # if(Stp_rate < 0.001):
+    #     break
     print("Objective Difference: ", Stp_rate, "Iteration: ", k)
 # print("New W:", w)
 
