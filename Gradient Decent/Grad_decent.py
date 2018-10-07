@@ -104,7 +104,7 @@ print("Initialized W:",w)
 eta = 0.0001 # Use for Ionosphere dataset
 currentErr = 0 
 previousErr = 0
-for k in range(0, 100000, 1): # Reduce No. fo iterations for Assignment 2 Example
+for k in range(0, 100000, 1): # Reduce No. of iterations for Assignment 2 Example
     delF = [0]*cols
     previousErr = currentErr
     delF = compute_Delf(rows,cols,labeldict,w,data)
