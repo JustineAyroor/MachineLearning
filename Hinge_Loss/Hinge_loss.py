@@ -56,7 +56,7 @@ def Compute_Error(r, label, wt, data):
     for i in range(0, r, 1):
         if(label.get(i) != None):
             errlist = [0,(1 - (label[i]*dot_prod_logic(wt, data[i])))] 
-            error += max(errlist) 
+            error += max(errlist)  
     return error
 
 def prediction(r, label, wt, data):
@@ -103,7 +103,7 @@ w = Initialize_W(cols)
 
 # Gradient Decent
 k = 0
-# lamda = 1/2 # Can keep changing the value to get optimized results
+lamda = 0.01 # Can keep changing the value to get optimized results
 eta = 0.001
 currentErr = 0 
 previousErr = 0
@@ -118,17 +118,17 @@ while(isConverged != True):
     w = Update_W(w, cols, eta, Delf)
     # Compute Objective/Error
     Error = Compute_Error(rows, labeldict, w, data)
-    currentErr = Error
-    # currentErr = Error + (normw**2)*lamda # To work with regularizer
+    # currentErr = Error
+    currentErr = Error + (normw**2)*lamda # To work with regularizer
     print("Objective Difference: ", abs(currentErr-previousErr), " Iteration No. ", k)
-    # if(abs(currentErr-previousErr)<0.000000001):  # Use for Practice Dataset provided for Assignment 3
-    if(abs(currentErr-previousErr)<0.001):
+    if(abs(currentErr-previousErr)<0.000000001):  # Use for Practice Dataset provided for Assignment 3
+    # if(abs(currentErr-previousErr)<0.001):
         isConverged = True
     # if(abs(currentErr-previousErr)==0):
-    # isConverged = True
+    #     isConverged = True
     k+=1
 
-# print(w) # Uncomment to chech W when working with practice Dataset 
+print(w) # Uncomment to chech W when working with practice Dataset 
 print("Distance from Origin: ",dist_origin(w, normw))
 
 # Prediction
