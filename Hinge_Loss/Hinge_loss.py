@@ -128,7 +128,7 @@ while(isConverged != True):
     #     isConverged = True
     k+=1
 
-print(w) # Uncomment to chech W when working with practice Dataset 
+# print(w) # Uncomment to chech W when working with practice Dataset 
 print("Distance from Origin: ",dist_origin(w, normw))
 
 # Prediction
