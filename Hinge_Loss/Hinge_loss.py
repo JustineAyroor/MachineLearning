@@ -121,8 +121,8 @@ while(isConverged != True):
     # currentErr = Error
     currentErr = Error + (normw**2)*lamda # To work with regularizer
     print("Objective Difference: ", abs(currentErr-previousErr), " Iteration No. ", k)
-    if(abs(currentErr-previousErr)<0.000000001):  # Use for Practice Dataset provided for Assignment 3
-    # if(abs(currentErr-previousErr)<0.001):
+    # if(abs(currentErr-previousErr)<0.000000001):  # Use for Practice Dataset provided for Assignment 3
+    if(abs(currentErr-previousErr)<0.001):
         isConverged = True
     # if(abs(currentErr-previousErr)==0):
     #     isConverged = True
