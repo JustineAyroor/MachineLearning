@@ -2,7 +2,7 @@ import sys,subprocess
 
 Ber_Dataset = []
 
-Dataset = ["climate","micromass","qsar","hill_valley","breast_cancer","ionosphere"]
+Dataset = ["climate","qsar","hill_valley","breast_cancer","ionosphere","micromass"]
 for i in range(0,len(Dataset),1):
     print("Running for least_squares_adaptive "+ Dataset[i])
     average = 0

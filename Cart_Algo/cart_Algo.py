@@ -1,7 +1,6 @@
 # Justine Ayroor
 # UCID: ja573
 # Assignment 6
-# Use Labels File only, Trainlabels will not work 
 import sys,math,random
 
 # Input Data 
@@ -35,6 +34,7 @@ while(l != ''):
 f.close()
 
 giniVal = []
+splitIndex = []
 # print(len(giniVal))
 # print(len(colVal))
 
@@ -44,12 +44,13 @@ for k in range(0,cols,1):
     labels = []
 
     for i in range(0,rows,1):
-        colVal.append(data[i][k])
-        labels.append(labeldict[i])
-    
+        if(labeldict.get(i) != None):
+            colVal.append(data[i][k])
+            labels.append(labeldict[i])
+        
     colVal, labels = zip(*sorted(zip(colVal,labels)))
     
-    for stump in range(1,rows,1):
+    for stump in range(1,len(colVal),1):
         lsize = stump
         rsize = rows - stump
         lp=0
@@ -58,16 +59,16 @@ for k in range(0,cols,1):
             if(labels[i] == -1):
                 lp+=1
 
-        for i in range(stump,rows,1):
+        for i in range(stump,len(colVal),1):
             if(labels[i] == -1):
                 rp+=1
 
         gini = (lsize/rows)*(lp/lsize)*(1 - lp/lsize) + (rsize/rows)*(rp/rsize)*(1 - rp/rsize)
         giniStumps.append(gini)
-        # print(lp,rp,rsize,lsize)
+        # print(lp,rp,rsize,lsize,gini, stump)
+    splitIndex.append(giniStumps.index(min(giniStumps)))
     giniVal.append(min(giniStumps))
 
-
-# print(giniVal)
+print("Split-Index:",splitIndex[giniVal.index(min(giniVal))])
 print("Collumn With Min GiniValue: ",giniVal.index(min(giniVal)))
 print("Gini Value: ",min(giniVal))
