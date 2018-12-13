@@ -52,7 +52,8 @@ for i in range(0,len(testData),1):
 for iterate in range(0, 100, 1):
     Bag = []
     BagLabel = []
-    for i in range(0, 350, 1):
+    n = math.floor(0.6*len(TrainData))
+    for i in range(0, n, 1):
         randval = random.randint(0,len(TrainData)-1)
         Bag.append(TrainData[randval])
         BagLabel.append(TrainDatalabels[randval])
@@ -94,11 +95,12 @@ for iterate in range(0, 100, 1):
 
 
     for i in range(0,len(testData),1):
-        if(testData[i][compcol] < TrainData[comprow][compcol]):
+        if(testData[i][compcol] < Bag[comprow][compcol]):
             numofVotes[i][0] += 1
         else:
             numofVotes[i][1] += 1
-
+    print(iterate)
+print(numofVotes)
 for i in range(0, len(testData),1):
     if(numofVotes[i][0]<numofVotes[i][1]):
         print(missingLabels[i]," - 0")
@@ -106,8 +108,8 @@ for i in range(0, len(testData),1):
     else:
         print(missingLabels[i]," - 1")
         labeldict[missingLabels[i]] = 1
-
-trainlabelfile = sys.argv[3]
+truelabelsdict = {"breast_cancer.data":"breast_cancer.labels","climate.data":"climate.labels","qsar.data":"qsar.labels","hill_valley.data":"hill_valley.labels","ionosphere.data":"ionosphere.labels","micromass.data":"micromass.labels"}
+trainlabelfile = truelabelsdict[datafile]
 f = open(trainlabelfile, "r")
 truelabels = {}
 l = f.readline()

@@ -160,7 +160,8 @@ prediction(rows,labeldict,w,data)
 
 
 # Accuracy Check & Balanced Error Rate
-trainlabelfile = sys.argv[3]
+truelabelsdict = {"breast_cancer.data":"breast_cancer.labels","climate.data":"climate.labels","qsar.data":"qsar.labels","hill_valley.data":"hill_valley.labels","ionosphere.data":"ionosphere.labels","micromass.data":"micromass.labels"}
+trainlabelfile = truelabelsdict[datafile]
 f = open(trainlabelfile, "r")
 truelabels = {}
 l = f.readline()
