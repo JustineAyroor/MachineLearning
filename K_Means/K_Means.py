@@ -57,6 +57,14 @@ while(isConverged != True):
     if(prevObjective == currObjective):
         isConverged = True
         break
-
+clustersName = []
+for ch in range(0,cluster,1):
+    clustersName.append([])
 for i in range(0,rows,1):
-    print(i, predval[i])
+    # print(i, predval[i])
+    for j in range(0,cluster,1):
+        if(predval[i] == j):
+            clustersName[j].append(i)
+
+for iterate in range(0,cluster,1):
+    print("Cluster",iterate,":\n", clustersName[iterate])

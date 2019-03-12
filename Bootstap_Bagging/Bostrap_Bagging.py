@@ -108,33 +108,34 @@ for i in range(0, len(testData),1):
     else:
         print(missingLabels[i]," - 1")
         labeldict[missingLabels[i]] = 1
-truelabelsdict = {"breast_cancer.data":"breast_cancer.labels","climate.data":"climate.labels","qsar.data":"qsar.labels","hill_valley.data":"hill_valley.labels","ionosphere.data":"ionosphere.labels","micromass.data":"micromass.labels"}
-trainlabelfile = truelabelsdict[datafile]
-f = open(trainlabelfile, "r")
-truelabels = {}
-l = f.readline()
-while(l != ''):
-    a = l.split()
-    truelabels[int(a[1])] = int(a[0])
-    l = f.readline()
-f.close()
 
-error = 0
-a = 0
-b = 0
-c = 0
-d = 0
-for i in missingLabels:
-    if(truelabels[i] != labeldict[i]):
-        error += 1
-    if(truelabels[i] == 0 and labeldict[i] == 0):
-        a += 1
-    elif(truelabels[i] == 0 and labeldict[i] == 1):
-        b += 1
-    elif(truelabels[i] == 1 and labeldict[i] == 0):
-        c += 1
-    elif(truelabels[i] == 1 and labeldict[i] == 1):
-        d += 1
-print('Accuracy Check :', (100 - error/len(missingLabels)*100))
-ber = 0.5*(b/(a+b)) + (c/(c+d))
-print("BER: ",ber)
+# truelabelsdict = {"breast_cancer.data":"breast_cancer.labels","climate.data":"climate.labels","qsar.data":"qsar.labels","hill_valley.data":"hill_valley.labels","ionosphere.data":"ionosphere.labels","micromass.data":"micromass.labels"}
+# trainlabelfile = truelabelsdict[datafile]
+# f = open(trainlabelfile, "r")
+# truelabels = {}
+# l = f.readline()
+# while(l != ''):
+#     a = l.split()
+#     truelabels[int(a[1])] = int(a[0])
+#     l = f.readline()
+# f.close()
+
+# error = 0
+# a = 0
+# b = 0
+# c = 0
+# d = 0
+# for i in missingLabels:
+#     if(truelabels[i] != labeldict[i]):
+#         error += 1
+#     if(truelabels[i] == 0 and labeldict[i] == 0):
+#         a += 1
+#     elif(truelabels[i] == 0 and labeldict[i] == 1):
+#         b += 1
+#     elif(truelabels[i] == 1 and labeldict[i] == 0):
+#         c += 1
+#     elif(truelabels[i] == 1 and labeldict[i] == 1):
+#         d += 1
+# print('Accuracy Check :', (100 - error/len(missingLabels)*100))
+# ber = 0.5*(b/(a+b)) + (c/(c+d))
+# print("BER: ",ber)
